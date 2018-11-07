@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Taskify</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="options_button">Options Button</string>
+    <string name="title_activity_options">OptionsActivity</string>
+    <string name="add">Add</string>
+    <string name="title_activity_add_task">AddTaskActivity</string>
+    <string name="add_task">Add Task</string>
+    <string name="save_task">Save Task</string>
+    <string name="title_activity_selected_task">SelectedTaskActivity</string>
+    <string name="delete_all">Delete All</string>
+    <string name="complete_all">Complete All</string>
+    <string name="completed_task_count">Completed Task Count</string>
+    <string name="title_activity_completed_task">CompletedTaskActivity</string>
+    <string name="back_button">Back Button</string>
+    <string name="tasks_deleted">Tasks Deleted</string>
+    <string name="no_tasks">No Tasks</string>
+    <string name="task">Task</string>
+</resources>

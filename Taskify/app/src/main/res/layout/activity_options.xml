@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wear.widget.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:padding="@dimen/box_inset_layout_padding"
+    tools:context=".options_screen.OptionsActivity"
+    tools:deviceIds="wear">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:boxedEdges="all">
+
+        <TextView
+            android:id="@+id/selected_task_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="0dp"
+            android:layout_height="13dp"
+            android:layout_marginTop="4dp"
+            android:background="@color/background_color"
+            android:contentDescription="@string/options_button"
+            android:src="@drawable/ic_arrow_up_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selected_task_label" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_button">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/remove_all_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/delete_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/add_circle_image_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/complete_all_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/completeicon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/remove_all_circle_image_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/complete_count_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/count"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/complete_all_circle_image_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/add_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/add"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/add_button"
+                    android:layout_width="36dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/add"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintStart_toEndOf="@+id/add_circle_image_view"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/delete_all_button"
+                    android:layout_width="66dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/delete_all"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintStart_toEndOf="@+id/remove_all_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/add_button" />
+
+                <Button
+                    android:id="@+id/complete_all_button"
+                    android:layout_width="85dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/complete_all"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintStart_toEndOf="@+id/complete_all_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/delete_all_button" />
+
+                <Button
+                    android:id="@+id/completed_task_count_button"
+                    android:layout_width="85dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/completed_task_count"
+                    android:textAllCaps="false"
+                    android:textColor="@color/text_color"
+                    app:layout_constraintStart_toEndOf="@+id/complete_count_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/complete_all_button" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.wear.widget.BoxInsetLayout>
