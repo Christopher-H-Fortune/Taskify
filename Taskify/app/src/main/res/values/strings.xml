@@ -16,8 +16,8 @@
     <string name="complete_all">Complete All</string>
     <string name="completed_task_count">Completed Task Count</string>
     <string name="title_activity_completed_task">CompletedTaskActivity</string>
-    <string name="back_button">Back Button</string>
     <string name="tasks_deleted">Tasks Deleted</string>
     <string name="no_tasks">No Tasks</string>
     <string name="task">Task</string>
+    <string name="back_button">Back Button</string>
 </resources>

@@ -7,7 +7,10 @@ package com.fullsail.christopherfortune.taskify.selected_task_screen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
 import com.fullsail.christopherfortune.taskify.R;
 
 public class SelectedTaskActivity extends WearableActivity {
@@ -29,7 +32,23 @@ public class SelectedTaskActivity extends WearableActivity {
         // Display the text the user chose
         taskSelectedEditText.setText(taskSelected);
 
+        // Obtain the image button to allow the user to go back to the home screen
+        ImageButton backImageButton = findViewById(R.id.back_image_button);
+
+        // Set the onClickListener of the backImageButton to the back_image_listener
+        backImageButton.setOnClickListener(back_image_listener);
+
         // Enables Always-on
         setAmbientEnabled();
     }
+
+    // ClickListener to allow the user to go back to the home screen
+    private View.OnClickListener back_image_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            // Send the user back to the home screen
+            finish();
+        }
+    };
 }
