@@ -9,7 +9,7 @@
     <string name="title_activity_options">OptionsActivity</string>
     <string name="add">Add</string>
     <string name="title_activity_add_task">AddTaskActivity</string>
-    <string name="add_task">Add Task</string>
+    <string name="add_task">Add a Task</string>
     <string name="save_task">Save Task</string>
     <string name="title_activity_selected_task">SelectedTaskActivity</string>
     <string name="delete_all">Delete All</string>

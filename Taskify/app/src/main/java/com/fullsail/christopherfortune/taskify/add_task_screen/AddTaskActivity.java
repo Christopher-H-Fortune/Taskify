@@ -10,6 +10,7 @@ import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
@@ -45,9 +46,25 @@ public class AddTaskActivity extends WearableActivity {
         // Set the saveTaskButton onClickListener
         saveTaskButton.setOnClickListener(save_task_listener);
 
+        // Obtain the back button
+        ImageButton goBackButton = findViewById(R.id.back_image_button);
+
+        // Set the goBackButton onClickListener to go_back_listener
+        goBackButton.setOnClickListener(go_back_listener);
+
         // Enables Always-on
         setAmbientEnabled();
     }
+
+    // OnClickListener to allow the user to go back to the options screen
+    private final View.OnClickListener go_back_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            // Finish the activity and send the user back to the options screen
+            finish();
+        }
+    };
 
     // OnClickListener for the saveTaskButton
     private final View.OnClickListener save_task_listener = new View.OnClickListener() {
