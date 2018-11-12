@@ -78,12 +78,24 @@ public class HomeActivity extends WearableActivity {
             }
         });
 
+        tasksEnteredListView.setOnItemLongClickListener(longClickListener);
+
         // Call the getTaskData method
         getTaskData();
 
         // Enables Always-on
         setAmbientEnabled();
     }
+
+    private final AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+            
+
+            return false;
+        }
+    };
 
     private final View.OnClickListener options_menu_listener = new View.OnClickListener() {
         @Override
