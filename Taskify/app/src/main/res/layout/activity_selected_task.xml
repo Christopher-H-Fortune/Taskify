@@ -51,10 +51,8 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_task_label">
 
             <android.support.constraint.ConstraintLayout
-                android:id="@+id/scroll_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:boxedEdges="all">
+                android:layout_height="wrap_content">
 
                 <EditText
                     android:id="@+id/chosen_task_multine_text"
@@ -70,7 +68,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
             </android.support.constraint.ConstraintLayout>
-
         </ScrollView>
 
     </android.support.constraint.ConstraintLayout>

@@ -22,4 +22,6 @@
     <string name="back_button">Back Button</string>
     <string name="title_activity_edit_task">EditTaskActivity</string>
     <string name="edit_task">Edit Task</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 </resources>

@@ -47,7 +47,7 @@
             android:name=".completed_task_count_screen.CompletedTaskCountActivity"
             android:label="@string/title_activity_completed_task" />
         <activity
-            android:name=".EditTaskActivity"
+            android:name=".edit_task_screen.EditTaskActivity"
             android:label="@string/title_activity_edit_task"></activity>
     </application>
 

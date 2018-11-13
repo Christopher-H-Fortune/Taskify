@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background_color"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context=".EditTaskActivity"
+    tools:context=".edit_task_screen.EditTaskActivity"
     tools:deviceIds="wear">
 
     <android.support.constraint.ConstraintLayout
@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/edit_task_label"
-            android:layout_width="84dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -38,6 +38,78 @@
             android:src="@drawable/ic_chevron_left_24dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="136dp"
+            android:layout_height="108dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_image_button">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edit_task_edit_text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/save_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/completeicon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_task_edit_text" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/cancel_circle_image_view2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/cancel_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/save_circle_image_view" />
+
+                <Button
+                    android:id="@+id/save_edit_button"
+                    android:layout_width="37dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/background_color"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/save_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_task_edit_text" />
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    android:layout_width="50dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/cancel_circle_image_view2"
+                    app:layout_constraintTop_toBottomOf="@+id/save_edit_button" />
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.wear.widget.BoxInsetLayout>
