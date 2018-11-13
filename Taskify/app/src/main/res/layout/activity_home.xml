@@ -16,7 +16,7 @@
         app:boxedEdges="all">
 
         <TextView
-            android:id="@+id/selected_task_label"
+            android:id="@+id/edit_task_label"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@+id/options_menu_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/selected_task_label">
+            app:layout_constraintTop_toBottomOf="@+id/edit_task_label">
 
             <ListView
                 android:id="@+id/task_list_view"

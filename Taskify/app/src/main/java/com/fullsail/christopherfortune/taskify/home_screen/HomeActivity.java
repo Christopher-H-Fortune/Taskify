@@ -91,7 +91,7 @@ public class HomeActivity extends WearableActivity {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-            
+
 
             return false;
         }

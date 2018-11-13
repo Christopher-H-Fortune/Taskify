@@ -20,4 +20,6 @@
     <string name="no_tasks">No Tasks</string>
     <string name="task">Task</string>
     <string name="back_button">Back Button</string>
+    <string name="title_activity_edit_task">EditTaskActivity</string>
+    <string name="edit_task">Edit Task</string>
 </resources>

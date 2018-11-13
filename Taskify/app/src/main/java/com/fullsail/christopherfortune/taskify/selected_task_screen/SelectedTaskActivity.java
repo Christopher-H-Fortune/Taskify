@@ -26,6 +26,7 @@ public class SelectedTaskActivity extends WearableActivity {
         // Get the task from the intent string extra
         String taskSelected = selectedTaskIntent.getStringExtra("task");
 
+        // TODO: Change the EditText to a TextView to display the selected task
         // Obtain the text field to display the task the user selected
         EditText taskSelectedEditText = findViewById(R.id.chosen_task_multine_text);
 
@@ -33,7 +34,7 @@ public class SelectedTaskActivity extends WearableActivity {
         taskSelectedEditText.setText(taskSelected);
 
         // Obtain the image button to allow the user to go back to the home screen
-        ImageButton backImageButton = findViewById(R.id.back_image_button);
+        ImageButton backImageButton = findViewById(R.id.home_image_button);
 
         // Set the onClickListener of the backImageButton to the back_image_listener
         backImageButton.setOnClickListener(back_image_listener);

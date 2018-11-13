@@ -47,7 +47,7 @@ public class AddTaskActivity extends WearableActivity {
         saveTaskButton.setOnClickListener(save_task_listener);
 
         // Obtain the back button
-        ImageButton goBackButton = findViewById(R.id.back_image_button);
+        ImageButton goBackButton = findViewById(R.id.home_image_button);
 
         // Set the goBackButton onClickListener to go_back_listener
         goBackButton.setOnClickListener(go_back_listener);
