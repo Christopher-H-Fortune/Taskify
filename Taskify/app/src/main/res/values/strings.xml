@@ -24,4 +24,6 @@
     <string name="edit_task">Edit Task</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="complete">Complete</string>
+    <string name="delete">Delete</string>
 </resources>

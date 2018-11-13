@@ -54,11 +54,79 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <Button
+                    android:id="@+id/complete_task_button"
+                    android:layout_width="62dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/complete"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/complete_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/chosen_task_multiline_text" />
+
+                <Button
+                    android:id="@+id/complete_task_button2"
+                    android:layout_width="62dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/edit_task"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/edit_circle_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/complete_task_button" />
+
+                <Button
+                    android:id="@+id/delete_task_button"
+                    android:layout_width="75dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/delete"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/edit_circle_image_view2"
+                    app:layout_constraintTop_toBottomOf="@+id/complete_task_button2" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/complete_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/completeicon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chosen_task_multiline_text" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/edit_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/complete_circle_image_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit_circle_image_view2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/delete_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_circle_image_view" />
+
                 <EditText
-                    android:id="@+id/chosen_task_multine_text"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/chosen_task_multiline_text"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:backgroundTint="@color/text_color"
                     android:ems="10"
                     android:inputType="textMultiLine"

@@ -28,7 +28,7 @@ public class SelectedTaskActivity extends WearableActivity {
 
         // TODO: Change the EditText to a TextView to display the selected task
         // Obtain the text field to display the task the user selected
-        EditText taskSelectedEditText = findViewById(R.id.chosen_task_multine_text);
+        EditText taskSelectedEditText = findViewById(R.id.chosen_task_multiline_text);
 
         // Display the text the user chose
         taskSelectedEditText.setText(taskSelected);
