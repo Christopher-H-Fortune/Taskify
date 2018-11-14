@@ -92,6 +92,7 @@ public class AddTaskActivity extends WearableActivity {
                 // Clear the taskEditText
                 taskEditText.setText(null);
 
+                // File Object that's storing the ArrayList
                 File taskFile = new File(getApplicationContext().getFilesDir(), "tasks");
 
                 // If the taskFile exists
