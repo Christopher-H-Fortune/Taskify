@@ -4,6 +4,7 @@
 
 package com.fullsail.christopherfortune.taskify.selected_task_screen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
@@ -14,13 +15,23 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.fullsail.christopherfortune.taskify.R;
+import com.fullsail.christopherfortune.taskify.edit_task_screen.EditTaskActivity;
 
 public class SelectedTaskActivity extends WearableActivity {
+
+    // Context to store the context of the application
+    Context context;
+
+    // Int variable to store the task selected number
+    int taskSelectedNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_task);
+
+        // Store the application context to the context variable
+        context = getApplicationContext();
 
         // Get the intent of the passing Activity
         Intent selectedTaskIntent = getIntent();
@@ -29,7 +40,7 @@ public class SelectedTaskActivity extends WearableActivity {
         String taskSelected = selectedTaskIntent.getStringExtra("task");
 
         // Get the task number chosen from the intent int extra
-        int taskSelectedNumber = selectedTaskIntent.getIntExtra("taskNumber", 0);
+        taskSelectedNumber = selectedTaskIntent.getIntExtra("taskNumber", 0);
 
         // Obtain the text field to display the task the user selected
         TextView taskSelectedTextView = findViewById(R.id.task_selected_text_view);
@@ -66,7 +77,7 @@ public class SelectedTaskActivity extends WearableActivity {
     }
 
     // ClickListener to allow the user to go back to the home screen
-    private View.OnClickListener back_image_listener = new View.OnClickListener() {
+    private final View.OnClickListener back_image_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
@@ -76,7 +87,7 @@ public class SelectedTaskActivity extends WearableActivity {
     };
 
     // ClickListener to allow the user to complete the selected task
-    private View.OnClickListener complete_task_listener = new View.OnClickListener() {
+    private final View.OnClickListener complete_task_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
@@ -85,15 +96,23 @@ public class SelectedTaskActivity extends WearableActivity {
     };
 
     // ClickListener to allow the user to edit the selected task
-    private View.OnClickListener edit_task_listener = new View.OnClickListener() {
+    private final View.OnClickListener edit_task_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
+            // Intent to send the user to the Edit Task Screen to edit the selected task
+            Intent editSelectedTaskIntent = new Intent(context, EditTaskActivity.class);
+
+            // Put the task chosen int to the intent to send to the Edit Task Screen
+            editSelectedTaskIntent.putExtra("taskSelected", taskSelectedNumber);
+
+            // Start the Edit Task Screen with the intent created above
+            startActivity(editSelectedTaskIntent);
         }
     };
 
     // ClickListener to allow the user to delete the selected task
-    private View.OnClickListener delete_task_listener = new View.OnClickListener() {
+    private final View.OnClickListener delete_task_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
