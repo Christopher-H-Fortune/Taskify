@@ -59,15 +59,25 @@
                     android:layout_width="62dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:background="@color/background_color"
                     android:text="@string/complete"
                     android:textAllCaps="false"
                     app:layout_constraintStart_toEndOf="@+id/complete_circle_image_view"
-                    app:layout_constraintTop_toBottomOf="@+id/chosen_task_multiline_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/task_selected_text_view" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/complete_circle_image_view"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/completeicon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/task_selected_text_view" />
 
                 <Button
-                    android:id="@+id/complete_task_button2"
+                    android:id="@+id/edit_task_button"
                     android:layout_width="62dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="8dp"
@@ -77,28 +87,6 @@
                     android:textAllCaps="false"
                     app:layout_constraintStart_toEndOf="@+id/edit_circle_image_view"
                     app:layout_constraintTop_toBottomOf="@+id/complete_task_button" />
-
-                <Button
-                    android:id="@+id/delete_task_button"
-                    android:layout_width="75dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/background_color"
-                    android:text="@string/delete"
-                    android:textAllCaps="false"
-                    app:layout_constraintStart_toEndOf="@+id/edit_circle_image_view2"
-                    app:layout_constraintTop_toBottomOf="@+id/complete_task_button2" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/complete_circle_image_view"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/completeicon"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chosen_task_multiline_text" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/edit_circle_image_view"
@@ -110,8 +98,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/complete_circle_image_view" />
 
+                <Button
+                    android:id="@+id/delete_selected_task_button"
+                    android:layout_width="43dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/background_color"
+                    android:text="@string/delete"
+                    android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@+id/delete_cirlce_image_view"
+                    app:layout_constraintTop_toBottomOf="@+id/edit_task_button" />
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/edit_circle_image_view2"
+                    android:id="@+id/delete_cirlce_image_view"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="25dp"
@@ -120,21 +120,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/edit_circle_image_view" />
 
-                <EditText
-                    android:id="@+id/chosen_task_multiline_text"
+                <TextView
+                    android:id="@+id/task_selected_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    android:backgroundTint="@color/text_color"
-                    android:ems="10"
-                    android:inputType="textMultiLine"
-                    android:textColor="@color/text_color"
+                    android:maxLines="10"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
 

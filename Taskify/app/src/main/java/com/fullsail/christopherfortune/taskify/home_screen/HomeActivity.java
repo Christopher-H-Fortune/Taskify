@@ -72,6 +72,7 @@ public class HomeActivity extends WearableActivity {
 
                 // Assign the task chosen text to send the task text to the selected task screen
                 taskSelectedIntent.putExtra("task", taskSelected);
+                taskSelectedIntent.putExtra("taskNumber", i);
 
                 // Start the activity with the intent created above
                 startActivity(taskSelectedIntent);
