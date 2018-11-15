@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class AddTaskActivity extends WearableActivity {
 
     // ArrayList of type TaskData to store the tasks the user enters
-    ArrayList<TaskData> taskData = new ArrayList<>();
+    private ArrayList<TaskData> taskData = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +108,7 @@ public class AddTaskActivity extends WearableActivity {
                         objectInputStream.close();
 
                         // Call the getData method passing the taskString
-                        getDataMethod(taskString);
+                        saveDataMethod(taskString);
 
                     // Catch any error that might occur
                     } catch (IOException | ClassNotFoundException e) {
@@ -120,11 +120,8 @@ public class AddTaskActivity extends WearableActivity {
                 } else {
 
                     // Call the getData method passing the taskString
-                    getDataMethod(taskString);
+                    saveDataMethod(taskString);
                 }
-
-                // Insert the task to the tasks database
-                // databaseHelper.insertTask(taskString, false);
 
                 // Intent to go back to the home screen to see the newly saved task
                 Intent goHomeIntent = new Intent(getBaseContext(), HomeActivity.class);
@@ -136,7 +133,8 @@ public class AddTaskActivity extends WearableActivity {
         }
     };
 
-    public void getDataMethod(String taskString){
+    // Method to save the data to the internal storage
+    private void saveDataMethod(String taskString){
         try {
 
             // Create the fileOutputStream with the file name tasks to internal storage

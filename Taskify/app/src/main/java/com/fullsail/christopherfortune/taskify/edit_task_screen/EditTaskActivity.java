@@ -4,6 +4,7 @@
 
 package com.fullsail.christopherfortune.taskify.edit_task_screen;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
@@ -11,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fullsail.christopherfortune.taskify.R;
@@ -28,18 +28,24 @@ import java.util.ArrayList;
 public class EditTaskActivity extends WearableActivity {
 
     // ArrayList to store the data from the internal storage
-    ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
+    private ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
     // EditText field to display the text to the user and save the data from it
-    EditText taskEditText;
+    private EditText taskEditText;
 
     // Int variable to save the task number the user chose
-    int taskNumber;
+    private int taskNumber;
+
+    // Context to store the context of the application
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
+
+        // Store the application context to the context variable
+        context = getApplicationContext();
 
         // Get the intent of the passing Activity
         Intent editTaskIntent = getIntent();
@@ -135,6 +141,12 @@ public class EditTaskActivity extends WearableActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+                // Intent to send the user back to the home screen
+                Intent homeIntnet = new Intent(context, HomeActivity.class);
+
+                // Start the Home Screen Activity with the intent created above
+                startActivity(homeIntnet);
             }
         }
     };

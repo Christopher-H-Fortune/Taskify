@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -29,16 +28,16 @@ import java.util.ArrayList;
 public class SelectedTaskActivity extends WearableActivity {
 
     // Context to store the context of the application
-    Context context;
+    private Context context;
 
     // Int variable to store the task selected number
-    int taskSelectedNumber;
+    private int taskSelectedNumber;
 
     // String variable to store the task selected string
-    String taskSelected;
+    private String taskSelected;
 
     // ArrayList to store the data from the internal storage
-    ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
+    private ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,6 +131,12 @@ public class SelectedTaskActivity extends WearableActivity {
 
             // Call the saveTaskData method to save the data to the internal storage
             saveTaskData();
+
+            // Intent to send the user back to the home screen
+            Intent homeIntent = new Intent(context, HomeActivity.class);
+
+            // Start the Home Screen Activity with the intent created above
+            startActivity(homeIntent);
         }
     };
 

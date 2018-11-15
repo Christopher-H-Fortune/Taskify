@@ -6,6 +6,7 @@ package com.fullsail.christopherfortune.taskify.home_screen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.LayoutInflater;
@@ -22,20 +23,22 @@ import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
 import com.fullsail.christopherfortune.taskify.options_screen.OptionsActivity;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class HomeActivity extends WearableActivity {
 
     // ArrayList to store the data from the internal storage
-    ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
+    private ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
     // ListView to display the task the user has created and saved on the device
-    ListView tasksEnteredListView;
+    private ListView tasksEnteredListView;
 
     // Context to store the context of the application
-    Context context;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +89,35 @@ public class HomeActivity extends WearableActivity {
         @Override
         public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+            // Get the string of the task chosen
+            String task = taskDataArrayList.get(i).getTask();
 
+            // Update the boolean value at the task selected
+            taskDataArrayList.set(i, new TaskData(task, true));
+
+            try {
+
+                // Create the fileOutputStream with the file name tasks to internal storage
+                FileOutputStream fileOutputStream = openFileOutput("tasks", MODE_PRIVATE);
+
+                // ObjectOutputStream to write the array to the storage
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+                // Write the taskData arrayList to the file
+                objectOutputStream.writeObject(taskDataArrayList);
+
+                // Close the fileOutputStream and ObjectOutputStream
+                objectOutputStream.close();
+                fileOutputStream.close();
+
+                TaskListAdapter taskListAdapter = new TaskListAdapter(context, taskDataArrayList);
+
+                tasksEnteredListView.setAdapter(taskListAdapter);
+
+                // Catch any error that may occur
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             return false;
         }
@@ -123,7 +154,7 @@ public class HomeActivity extends WearableActivity {
             objectInputStream.close();
 
             // Create the TaskListAdapter to display the tasks in the task ListView
-            TaskListAdapter taskListAdapter = new TaskListAdapter(getApplicationContext(), taskDataArrayList);
+            TaskListAdapter taskListAdapter = new TaskListAdapter(context, taskDataArrayList);
 
             // Set the tasksEnteredListView adapter to the adapter created above
             tasksEnteredListView.setAdapter(taskListAdapter);
@@ -135,10 +166,10 @@ public class HomeActivity extends WearableActivity {
     }
 
     // ArrayAdapter class to display the data in the listView
-    public class TaskListAdapter extends ArrayAdapter<TaskData> {
+    class TaskListAdapter extends ArrayAdapter<TaskData> {
 
         // TaskListAdapter Constructor
-        public TaskListAdapter(Context context, ArrayList<TaskData> taskDataArrayList) {
+        TaskListAdapter(Context context, ArrayList<TaskData> taskDataArrayList) {
             super(context, 0, taskDataArrayList);
         }
 
@@ -163,6 +194,16 @@ public class HomeActivity extends WearableActivity {
 
                 // Display the task in the taskTextView
                 taskTextView.setText(task.getTask());
+
+                // if the task is completed
+                if(task.getCompletedBoolean()){
+
+                    // Put a strike through line through the text
+                    taskTextView.setPaintFlags(taskTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                    // Set the text color to green
+                    taskTextView.setTextColor(getResources().getColor(R.color.completed_color, null));
+                }
             }
 
             // Return convertView to display in the ListView

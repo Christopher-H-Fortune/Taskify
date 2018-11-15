@@ -26,4 +26,5 @@
     <string name="cancel">Cancel</string>
     <string name="complete">Complete</string>
     <string name="delete">Delete</string>
+    <string name="countMessage">You Have Completed %1$d Task\'s!</string>
 </resources>

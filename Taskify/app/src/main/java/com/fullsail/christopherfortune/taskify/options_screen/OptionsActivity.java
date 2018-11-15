@@ -15,14 +15,25 @@ import android.widget.Toast;
 
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.add_task_screen.AddTaskActivity;
+import com.fullsail.christopherfortune.taskify.completed_task_count_screen.CompletedTaskCountActivity;
 import com.fullsail.christopherfortune.taskify.home_screen.HomeActivity;
+import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class OptionsActivity extends WearableActivity {
 
     // Context to store the context for the intents
-    Context activityContext;
+    private Context activityContext;
+
+    // Array List to store the tasks from the storage
+    private ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,8 +140,27 @@ public class OptionsActivity extends WearableActivity {
         @Override
         public void onClick(View view) {
 
-            // Complete all the tasks
+            // Call the obtainTaskData method to get the arrayList of task data
+            obtainTaskData();
 
+            // Loop through the taskDaaArrayList
+            for(int i = 0; i < taskDataArrayList.size(); i++){
+
+                // Obtain the string to from the task to re-save to the array
+                String taskString = taskDataArrayList.get(i).getTask();
+
+                // Set the values of the index currently in the array to the temp string variable and set the value to true
+                taskDataArrayList.set(i, new TaskData(taskString, true));
+            }
+
+            // Re-save the array list to the internal storage
+            saveTaskData();
+
+            // Intent to send the user back to the home screen
+            Intent homeIntent = new Intent(activityContext, HomeActivity.class);
+
+            // Start the home screen activity with the intent created above
+            startActivity(homeIntent);
         }
     };
 
@@ -140,6 +170,57 @@ public class OptionsActivity extends WearableActivity {
         public void onClick(View view) {
 
             // Display the completed task count screen
+            Intent taskCountIntent = new Intent(activityContext, CompletedTaskCountActivity.class);
+
+            // Start the activity with the intent created above
+            startActivity(taskCountIntent);
         }
     };
+
+    // Method to obtain the data from the internal storage
+    private void obtainTaskData() {
+        // Obtain the task file
+        try {
+
+            // File Input Stream to get the tasks file
+            FileInputStream fileInputStream = openFileInput("tasks");
+
+            // Object Input Stream to get the object from the task file
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            // Store the object from the ObjectInputStream as an ArrayList to the taskDataArrayList variable
+            taskDataArrayList = (ArrayList) objectInputStream.readObject();
+
+            // Close the fileInputStream and ObjectInputStream
+            fileInputStream.close();
+            objectInputStream.close();
+
+            // Catch any error that might occur
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to save the data to the internal storage
+    private void saveTaskData(){
+        try {
+
+            // Create the fileOutputStream with the file name tasks to internal storage
+            FileOutputStream fileOutputStream = openFileOutput("tasks", MODE_PRIVATE);
+
+            // ObjectOutputStream to write the array to the storage
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            // Write the taskData arrayList to the file
+            objectOutputStream.writeObject(taskDataArrayList);
+
+            // Close the fileOutputStream and ObjectOutputStream
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+            // Catch any error that may occur
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

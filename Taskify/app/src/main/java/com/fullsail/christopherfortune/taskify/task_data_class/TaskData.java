@@ -23,6 +23,7 @@ public class TaskData implements Serializable {
         return task;
     }
 
+    // Getter to get the completed boolean from the object
     public Boolean getCompletedBoolean() {
         return completedBoolean;
     }
