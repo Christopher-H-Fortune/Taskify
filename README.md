@@ -22,4 +22,35 @@
 
 ### Where to Find Weekly Requirements ###
 
-* Currently the user can tap on the arrow at the bottom of the Home Screen that points downard. This will then take you to the Options Screen. You will then see all the choices available to the user. However, Add Task and Delete All Tasks are currently implemented. If you press Add Task you will be taken to the Add Task Screen which will allow you to enter a task and save the task to the watch. The user will be taken back to the home screen to see the newly added task they have created. They can then press on the task they just saved and now see in the ListView to see the detailed view of the task. You can back out from that Screen to go back to the Home screen to see the tasks list. If you press Delete All Tasks in the Options Screen, It will delete all the tasks the user has created and takes them to the home screen to see the tasks have been deleted.
+**Home Screen**
+
+- List of all the tasks the user has created is being presented to the user in the ListView.
+- Tapping on a task will take the user to the Selected Task Screen displaying the task chosen. 
+- Long pressing on a task will complete a task and put a line through the text along with changing the text color to green.
+- Pressing the up arrow will take the user to the options screen.
+
+**Selected Task Screen**
+
+- Displays the task the user selected in a Text View.
+- Back button to allow the user to go back to the home screen.
+- Complete button to allow the user to complete the task and send the user back to the home screen.
+- Edit Task Button to allow the user to edit the selected task.
+- Delete Button to allow the user to delete the task selected.
+
+**Edit Task Screen**
+
+- Allows the user to edit the selected task and save it.
+- Save button to save the selected task and makes sure the user has entered valuable information.
+- Back button to send the user back to the selected task screen.
+
+**Options Screen**
+
+- Button to Add a task will take the user to the Add Task Screen.
+- Button to Delete All Tasks will delete all the tasks the user has created and take the user back to the home screen.
+- Button to Complete All tasks will complete all tasks and send the user back to the home screen.
+- Button to See Completed Task Count  will take the user to the Completed Task Count screen.
+
+**Completed Task Screen** 
+
+- Displays the count of the completed Tasks.
+- Button to allow the user to go back to the options screen.
