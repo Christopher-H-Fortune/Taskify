@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.selected_task_screen.SelectedTaskActivity;
 import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
-import com.fullsail.christopherfortune.taskify.database_helper.DatabaseHelper;
 import com.fullsail.christopherfortune.taskify.options_screen.OptionsActivity;
 
 import java.io.FileInputStream;
@@ -28,8 +27,6 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class HomeActivity extends WearableActivity {
-
-    //DatabaseHelper databaseHelper;
 
     // ArrayList to store the data from the internal storage
     ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
@@ -53,9 +50,6 @@ public class HomeActivity extends WearableActivity {
 
         // Set the options button click listener to options_menu_listener
         optionsButton.setOnClickListener(options_menu_listener);
-
-        // Set the context of the DatabaseHelper to the application context
-        //databaseHelper = DatabaseHelper.getInstance(getApplicationContext());
 
         // Obtain the listView to set the adapter and allow the user to select a task from the list view
         tasksEnteredListView = findViewById(R.id.task_list_view);
@@ -176,17 +170,4 @@ public class HomeActivity extends WearableActivity {
         }
 
     }
-
-//    class TaskAdapter extends ResourceCursorAdapter{
-//
-//        private TaskAdapter(Context context, Cursor cursor){
-//            super(context, android.R.layout.simple_list_item_1, cursor, 0);
-//        }
-//
-//        @Override
-//        public void bindView(View view, Context context, Cursor cursor) {
-//            TextView taskTextView = view.findViewById(android.R.id.text1);
-//            taskTextView.setText(cursor.getString(cursor.getColumnIndex(DatabaseHelper.COLUMN_TASK)));
-//        }
-//    }
 }

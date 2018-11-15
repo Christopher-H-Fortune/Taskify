@@ -16,6 +16,15 @@ import android.widget.TextView;
 
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.edit_task_screen.EditTaskActivity;
+import com.fullsail.christopherfortune.taskify.home_screen.HomeActivity;
+import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class SelectedTaskActivity extends WearableActivity {
 
@@ -24,6 +33,9 @@ public class SelectedTaskActivity extends WearableActivity {
 
     // Int variable to store the task selected number
     int taskSelectedNumber;
+
+    // ArrayList to store the data from the internal storage
+    ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +127,56 @@ public class SelectedTaskActivity extends WearableActivity {
     private final View.OnClickListener delete_task_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            // Obtain the task file
+            try {
 
+                // File Input Stream to get the tasks file
+                FileInputStream fileInputStream = openFileInput("tasks");
+
+                // Object Input Stream to get the object from the task file
+                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+                // Store the object from the ObjectInputStream as an ArrayList to the taskDataArrayList variable
+                taskDataArrayList = (ArrayList) objectInputStream.readObject();
+
+                // Close the fileInputStream and ObjectInputStream
+                fileInputStream.close();
+                objectInputStream.close();
+
+                // Catch any error that might occur
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            // Delete the selected task
+            taskDataArrayList.remove(taskSelectedNumber);
+
+            // Save the data back to the watch
+            try {
+
+                // Create the fileOutputStream with the file name tasks to internal storage
+                FileOutputStream fileOutputStream = openFileOutput("tasks", MODE_PRIVATE);
+
+                // ObjectOutputStream to write the array to the storage
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+                // Write the taskData arrayList to the file
+                objectOutputStream.writeObject(taskDataArrayList);
+
+                // Close the fileOutputStream and ObjectOutputStream
+                objectOutputStream.close();
+                fileOutputStream.close();
+
+                // Catch any error that may occur
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Intent to send the user back to the home screen
+            Intent homeIntent = new Intent(context, HomeActivity.class);
+
+            // Start the Home Screen Activity with the intent created above
+            startActivity(homeIntent);
         }
     };
 }

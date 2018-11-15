@@ -14,7 +14,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
-import com.fullsail.christopherfortune.taskify.database_helper.DatabaseHelper;
 import com.fullsail.christopherfortune.taskify.home_screen.HomeActivity;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,9 +25,6 @@ import java.util.ArrayList;
 
 public class AddTaskActivity extends WearableActivity {
 
-    // Set the instance of the DatabaseHelper
-    DatabaseHelper databaseHelper;
-
     // ArrayList of type TaskData to store the tasks the user enters
     ArrayList<TaskData> taskData = new ArrayList<>();
 
@@ -36,9 +32,6 @@ public class AddTaskActivity extends WearableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-
-        // Set the instance of the DatabaseHelper
-        databaseHelper = DatabaseHelper.getInstance(this);
 
         // Obtain the save task button
         Button saveTaskButton = findViewById(R.id.add_task_button);
