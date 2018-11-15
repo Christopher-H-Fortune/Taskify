@@ -34,6 +34,9 @@ public class SelectedTaskActivity extends WearableActivity {
     // Int variable to store the task selected number
     int taskSelectedNumber;
 
+    // String variable to store the task selected string
+    String taskSelected;
+
     // ArrayList to store the data from the internal storage
     ArrayList<TaskData> taskDataArrayList = new ArrayList<>();
 
@@ -49,7 +52,7 @@ public class SelectedTaskActivity extends WearableActivity {
         Intent selectedTaskIntent = getIntent();
 
         // Get the task from the intent string extra
-        String taskSelected = selectedTaskIntent.getStringExtra("task");
+        taskSelected = selectedTaskIntent.getStringExtra("task");
 
         // Get the task number chosen from the intent int extra
         taskSelectedNumber = selectedTaskIntent.getIntExtra("taskNumber", 0);
@@ -84,6 +87,27 @@ public class SelectedTaskActivity extends WearableActivity {
         // Set the onClickListener of the deleteButton to the delete_task_listener
         deleteButton.setOnClickListener(delete_task_listener);
 
+        // Obtain the task file
+        try {
+
+            // File Input Stream to get the tasks file
+            FileInputStream fileInputStream = openFileInput("tasks");
+
+            // Object Input Stream to get the object from the task file
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            // Store the object from the ObjectInputStream as an ArrayList to the taskDataArrayList variable
+            taskDataArrayList = (ArrayList) objectInputStream.readObject();
+
+            // Close the fileInputStream and ObjectInputStream
+            fileInputStream.close();
+            objectInputStream.close();
+
+            // Catch any error that might occur
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
         // Enables Always-on
         setAmbientEnabled();
     }
@@ -103,7 +127,11 @@ public class SelectedTaskActivity extends WearableActivity {
         @Override
         public void onClick(View view) {
 
+            // Update the completed boolean value in the array list
+            taskDataArrayList.set(taskSelectedNumber, new TaskData(taskSelected, true));
 
+            // Call the saveTaskData method to save the data to the internal storage
+            saveTaskData();
         }
     };
 
@@ -127,50 +155,12 @@ public class SelectedTaskActivity extends WearableActivity {
     private final View.OnClickListener delete_task_listener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            // Obtain the task file
-            try {
-
-                // File Input Stream to get the tasks file
-                FileInputStream fileInputStream = openFileInput("tasks");
-
-                // Object Input Stream to get the object from the task file
-                ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-
-                // Store the object from the ObjectInputStream as an ArrayList to the taskDataArrayList variable
-                taskDataArrayList = (ArrayList) objectInputStream.readObject();
-
-                // Close the fileInputStream and ObjectInputStream
-                fileInputStream.close();
-                objectInputStream.close();
-
-                // Catch any error that might occur
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
 
             // Delete the selected task
             taskDataArrayList.remove(taskSelectedNumber);
 
-            // Save the data back to the watch
-            try {
-
-                // Create the fileOutputStream with the file name tasks to internal storage
-                FileOutputStream fileOutputStream = openFileOutput("tasks", MODE_PRIVATE);
-
-                // ObjectOutputStream to write the array to the storage
-                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
-                // Write the taskData arrayList to the file
-                objectOutputStream.writeObject(taskDataArrayList);
-
-                // Close the fileOutputStream and ObjectOutputStream
-                objectOutputStream.close();
-                fileOutputStream.close();
-
-                // Catch any error that may occur
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            // Call the saveTaskData method to save the data to the internal storage
+            saveTaskData();
 
             // Intent to send the user back to the home screen
             Intent homeIntent = new Intent(context, HomeActivity.class);
@@ -179,4 +169,28 @@ public class SelectedTaskActivity extends WearableActivity {
             startActivity(homeIntent);
         }
     };
+
+    // Method to save the data to the internal storage
+    private void saveTaskData(){
+        // Save the data back to the watch
+        try {
+
+            // Create the fileOutputStream with the file name tasks to internal storage
+            FileOutputStream fileOutputStream = openFileOutput("tasks", MODE_PRIVATE);
+
+            // ObjectOutputStream to write the array to the storage
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            // Write the taskData arrayList to the file
+            objectOutputStream.writeObject(taskDataArrayList);
+
+            // Close the fileOutputStream and ObjectOutputStream
+            objectOutputStream.close();
+            fileOutputStream.close();
+
+            // Catch any error that may occur
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
