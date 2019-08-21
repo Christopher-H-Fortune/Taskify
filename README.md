@@ -1,12 +1,12 @@
 # Taskify #
 
-### Bitbucket Repository Link ###
+### GitHub Repository Link ###
 
 **Clone Link**
-- https://Chris_Fortune@bitbucket.org/Chris_Fortune/taskify.git
+- https://github.com/Christopher-H-Fortune/Taskify.git
 
 **Repo Link**
-- [Click here to view repo on BitBucket.org.](https://bitbucket.org/Chris_Fortune/taskify/src/master/)
+- [Click here to view repo on GitHub.com](https://github.com/Christopher-H-Fortune/Taskify)
 
 ### Installation Instructions ###
 

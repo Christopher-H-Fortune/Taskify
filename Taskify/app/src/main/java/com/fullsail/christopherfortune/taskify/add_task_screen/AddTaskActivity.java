@@ -128,8 +128,8 @@ public class AddTaskActivity extends WearableActivity {
 
                 // Start the activity with the intent created above
                 startActivity(goHomeIntent);
-            }
 
+            }
         }
     };
 
