@@ -101,7 +101,8 @@
                     android:textAllCaps="false"
                     android:textColor="@color/text_color"
                     app:layout_constraintStart_toEndOf="@+id/add_circle_image_view"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    style="?android:attr/borderlessButtonStyle" />
 
                 <Button
                     android:id="@+id/delete_all_button"
@@ -114,7 +115,8 @@
                     android:textAllCaps="false"
                     android:textColor="@color/text_color"
                     app:layout_constraintStart_toEndOf="@+id/remove_all_circle_image_view"
-                    app:layout_constraintTop_toBottomOf="@+id/add_button" />
+                    app:layout_constraintTop_toBottomOf="@+id/add_button"
+                    style="?android:attr/borderlessButtonStyle"/>
 
                 <Button
                     android:id="@+id/complete_all_button"
@@ -127,7 +129,8 @@
                     android:textAllCaps="false"
                     android:textColor="@color/text_color"
                     app:layout_constraintStart_toEndOf="@+id/complete_all_circle_image_view"
-                    app:layout_constraintTop_toBottomOf="@+id/delete_all_button" />
+                    app:layout_constraintTop_toBottomOf="@+id/delete_all_button"
+                    style="?android:attr/borderlessButtonStyle"/>
 
                 <Button
                     android:id="@+id/completed_task_count_button"
@@ -142,7 +145,8 @@
                     android:textColor="@color/text_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/complete_count_circle_image_view"
-                    app:layout_constraintTop_toBottomOf="@+id/complete_all_button" />
+                    app:layout_constraintTop_toBottomOf="@+id/complete_all_button"
+                    style="?android:attr/borderlessButtonStyle"/>
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>

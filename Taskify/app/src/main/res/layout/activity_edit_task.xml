@@ -95,7 +95,8 @@
                     android:text="@string/save"
                     android:textAllCaps="false"
                     app:layout_constraintStart_toEndOf="@+id/save_circle_image_view"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_task_edit_text" />
+                    app:layout_constraintTop_toBottomOf="@+id/edit_task_edit_text"
+                    style="?android:attr/borderlessButtonStyle"/>
 
                 <Button
                     android:id="@+id/cancel_button"
@@ -107,7 +108,8 @@
                     android:text="@string/cancel"
                     android:textAllCaps="false"
                     app:layout_constraintStart_toEndOf="@+id/cancel_circle_image_view2"
-                    app:layout_constraintTop_toBottomOf="@+id/save_edit_button" />
+                    app:layout_constraintTop_toBottomOf="@+id/save_edit_button"
+                    style="?android:attr/borderlessButtonStyle"/>
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
 
