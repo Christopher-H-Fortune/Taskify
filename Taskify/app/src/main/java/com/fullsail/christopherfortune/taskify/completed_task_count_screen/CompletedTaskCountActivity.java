@@ -9,7 +9,6 @@ import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.fullsail.christopherfortune.taskify.R;
 import com.fullsail.christopherfortune.taskify.task_data_class.TaskData;
 import java.io.FileInputStream;
